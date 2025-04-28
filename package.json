@@ -1,0 +1,27 @@
+{
+  "name": "ceres",
+  "version": "1.0.0",
+  "description": "Sofware de gestion de ventas, compras y pedidos de productos",
+  "keywords": [
+    "node",
+    "sell",
+    "buy",
+    "api",
+    "restfull"
+  ],
+  "homepage": "https://github.com/damideleon/ceres#readme",
+  "bugs": {
+    "url": "https://github.com/damideleon/ceres/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damideleon/ceres.git"
+  },
+  "license": "SEE LICENCE IN ./LICENCE",
+  "author": "damideleon",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  }
+}
