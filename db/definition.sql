@@ -295,6 +295,20 @@ CREATE TABLE public.status_codes (
     status SMALLINT DEFAULT 1 NOT NULL
 );
 
+CREATE TABLE public.external_references (
+    id BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    local_id BIGINT NOT NULL,                 
+    local_type TEXT NOT NULL,                 
+    provider_id BIGINT NOT NULL REFERENCES public.people(id),  
+    external_id TEXT NOT NULL,               
+    external_code TEXT,                       
+    metadata JSONB,                           
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    UNIQUE (local_id, local_type, provider_id),  -- Un mapeo único por proveedor
+    UNIQUE (provider_id, external_id, local_type) -- Evita duplicados en el proveedor
+);
+
 -- Indexes
 CREATE INDEX idx_user_devices_last_used ON public.user_devices (last_used_at);
 CREATE INDEX idx_user_devices_user ON public.user_devices (user_id);
